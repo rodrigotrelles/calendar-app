@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatInputModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatToolbarModule
   ],
   exports: [
     MatButtonModule,
@@ -33,7 +35,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatInputModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule { }

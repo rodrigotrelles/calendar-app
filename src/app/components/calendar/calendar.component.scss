@@ -1,8 +1,9 @@
-$blue: #1b6ca8;
-$light-grey: rgba(black, .065);
-
 :host {
   margin: 0 auto;
+
+  @media only screen and (max-width: 1100px) {
+    margin: 0;
+  }
 }
 
 .calendar {
@@ -13,18 +14,17 @@ $light-grey: rgba(black, .065);
   grid-auto-rows: 12rem;
   border-left: 1px solid black;
 
-  &__header {
-    background-color: $blue;
-    color: white;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 500;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 0.3rem 0;
+  @media only screen and (max-width: 1100px) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  @media only screen and (max-width: 800px) {
+    grid-template-rows: min-content repeat(4, 10rem);
+    grid-auto-rows: 10rem;
+  }
+
+  app-calendar-header:last-of-type {
+    border-right: 1px solid black;
   }
 }
 

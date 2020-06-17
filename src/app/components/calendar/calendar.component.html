@@ -1,6 +1,4 @@
 <div class="calendar">
-  <div class="calendar__header" *ngFor="let day of calendarService.getDays()">
-    <span>{{day}}</span>
-  </div>
+  <app-calendar-header *ngFor="let day of calendarService.getDays()" [day]="day"></app-calendar-header>
   <app-calendar-block *ngFor="let day of calendarService.currentDays$ | async" [day]="day"></app-calendar-block>
 </div>

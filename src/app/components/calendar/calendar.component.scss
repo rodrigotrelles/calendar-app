@@ -1,0 +1,30 @@
+$blue: #1b6ca8;
+$light-grey: rgba(black, .065);
+
+:host {
+  margin: 0 auto;
+}
+
+.calendar {
+  margin: 3rem auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 14rem);
+  grid-template-rows: min-content repeat(4, 12rem);
+  grid-auto-rows: 12rem;
+  border-left: 1px solid black;
+
+  &__header {
+    background-color: $blue;
+    color: white;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.3rem 0;
+  }
+}
+

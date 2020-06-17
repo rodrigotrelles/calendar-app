@@ -6,12 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { AddReminderButtonComponent } from './components/add-reminder-button/add-reminder-button.component';
+import { CalendarBlockComponent } from './components/calendar-block/calendar-block.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    OverviewComponent
+    OverviewComponent,
+    CalendarComponent,
+    AddReminderButtonComponent,
+    CalendarBlockComponent
   ],
   imports: [
     BrowserModule,

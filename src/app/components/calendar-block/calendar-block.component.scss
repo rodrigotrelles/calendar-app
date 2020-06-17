@@ -1,0 +1,36 @@
+$blue: #1b6ca8;
+$light-grey: rgba(black, .065);
+
+:host {
+  width: 100%;
+}
+
+.calendar {
+  &__block {
+    height: 100%;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0.2rem 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: 0.2s all;
+
+    &.other-month {
+      background-color: $light-grey;
+      color: grey !important;
+    }
+
+    &.weekend {
+      background-color: $light-grey;
+      color: $blue;
+    }
+
+    &.today {
+      background-color: rgba($blue, 0.2);
+    }
+
+    &:hover {
+      background-color: rgba($blue, 0.3);
+    }
+  }
+}

@@ -9,13 +9,6 @@
     </button>
   </div>
   <mat-divider></mat-divider>
-  <div class="calendar">
-    <div class="calendar__header" *ngFor="let day of calendarService.getDays()">
-      <span>{{day}}</span>
-    </div>
-    <div class="calendar__block" *ngFor="let day of calendarService.currentDays$ | async"
-      [ngClass]="{'other-month': dayOfOtherMonth(day, (calendarService.currentMonth$ | async)), 'weekend': isWeekend(day)}">
-      <span>{{day.format('D')}}</span>
-    </div>
-  </div>
+  <app-calendar></app-calendar>
 </section>
+<app-add-reminder-button></app-add-reminder-button>

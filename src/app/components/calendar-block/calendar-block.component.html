@@ -1,0 +1,4 @@
+<div class="calendar__block"
+  [ngClass]="{'other-month': dayOfOtherMonth(day, (calendarService.currentMonth$ | async)), 'weekend': isWeekend(day), 'today': today(day)}">
+  <span>{{day.format('D')}}</span>
+</div>

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Are you sure?</h1>
+<div mat-dialog-content>
+  <p>All reminders for {{data.day.format('D/MM/yyyy')}} will be deleted.</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Back</button>
+  <button mat-button (click)="deleteAll()" color="warn">Delete all</button>
+</div>

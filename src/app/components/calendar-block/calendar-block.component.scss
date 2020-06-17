@@ -13,6 +13,7 @@ $light-grey: rgba(black, 0.065);
   font-size: 1.5rem;
   font-weight: 500;
   transition: 0.2s all;
+  position: relative;
 
   &.other-month {
     background-color: $light-grey;
@@ -33,6 +34,31 @@ $light-grey: rgba(black, 0.065);
       text-decoration: underline;
       font-weight: 600;
       cursor: pointer;
+    }
+  }
+
+  &__trash {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.2rem;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transition: .2s all;
+    width: 1.6rem;
+    height: 1.8rem;
+
+    background-image: url("../../../assets/icons/trash.svg");
+    background-size: cover;
+
+    &:focus {
+      border: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(0.8);
+      background-image: url("../../../assets/icons/trash_hover.svg");
     }
   }
 }

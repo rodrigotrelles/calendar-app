@@ -27,6 +27,43 @@ export class ReminderService {
 
     this.addReminder(reminder);
 
+    const reminder2: IReminder = {
+      id: '1',
+      text: 'Prueba2',
+      color: '#67db86',
+      allday: false,
+      city: 'Montevideo',
+      date:  moment('2020-06-17').add(12, 'hours'),
+      time: '12:00'
+    };
+
+    this.addReminder(reminder2);
+
+    const reminder3: IReminder = {
+      id: '1',
+      text: 'Prueba3',
+      color: '#67db86',
+      allday: false,
+      city: 'Montevideo',
+      date:  moment('2020-06-16').add(10, 'hours'),
+      time: '10:00'
+    };
+
+    this.addReminder(reminder3);
+
+
+    const reminder4: IReminder = {
+      id: '1',
+      text: 'Prueba4',
+      color: '#67db86',
+      allday: true,
+      city: 'Montevideo',
+      date:  moment('2020-06-18').add(11, 'hours'),
+      time: '11:00'
+    };
+
+    this.addReminder(reminder4);
+
   }
 
   get reminders(): IReminder[] {
@@ -68,5 +105,11 @@ export class ReminderService {
     const sortedList = this.sortReminders([...this.reminders]);
     this.remindersSource.next(sortedList);
     this.snackbarService.openSnackBar('Reminder edited successfully', 5000);
+  }
+
+  removeAllRemindersForOneDay(day: moment.Moment) {
+    const filteredList = this.reminders.filter(r => r.date.format('D/MM/yyyy') !== day.format('D/MM/yyyy'));
+    this.remindersSource.next(filteredList);
+    this.snackbarService.openSnackBar('Reminders removed successfully', 5000);
   }
 }

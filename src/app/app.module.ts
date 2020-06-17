@@ -15,6 +15,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { CalendarHeaderComponent } from './components/calendar-header/calendar-header.component';
 import { ReminderBlockComponent } from './components/reminder-block/reminder-block.component';
 import { EditReminderComponent } from './dialogs/edit-reminder/edit-reminder.component';
+import { RemoveAllRemindersComponent } from './dialogs/remove-all-reminders/remove-all-reminders.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EditReminderComponent } from './dialogs/edit-reminder/edit-reminder.com
     NewReminderComponent,
     CalendarHeaderComponent,
     ReminderBlockComponent,
-    EditReminderComponent
+    EditReminderComponent,
+    RemoveAllRemindersComponent
   ],
   imports: [
     BrowserModule,

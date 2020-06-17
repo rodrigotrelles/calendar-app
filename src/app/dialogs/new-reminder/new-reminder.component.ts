@@ -26,6 +26,7 @@ export class NewReminderComponent implements OnInit {
       const reminder: IReminder = {
         id: moment().unix().toString(),
         text: f.value.text,
+        city: f.value.city,
         color: f.value.color ? f.value.color : this.getRandomColor(),
         date: f.value.date,
         time: String(this.timepicker.timepickerTime)

@@ -4,4 +4,5 @@ export interface IReminder {
   date: moment.Moment;
   time: string;
   color: string;
+  city: string;
 }

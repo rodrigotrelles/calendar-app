@@ -21,8 +21,6 @@ export class ReminderService {
   addReminder(reminder: IReminder) {
     this.remindersSource.next([...this.reminders, reminder]);
     this.snackbarService.openSnackBar('Reminder added successfully', 5000);
-
-    console.log(this.reminders);
   }
 
   removeReminder(id: string) {

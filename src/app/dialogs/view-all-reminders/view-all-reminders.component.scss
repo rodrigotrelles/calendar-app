@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+}
+
+.reminders {
+  position: relative;
+
+  &__trash {
+    position: absolute;
+    top: -.5rem;
+    right: -1rem;
+  }
+}

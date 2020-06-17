@@ -21,4 +21,9 @@ export class ViewAllRemindersComponent implements OnInit {
   close(): void {
     this.dialogRef.close();
   }
+
+  deleteAllReminders() {
+    this.reminderService.removeAllRemindersForOneDay(this.data.day);
+    this.close();
+  }
 }

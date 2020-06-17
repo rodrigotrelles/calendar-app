@@ -1,5 +1,5 @@
 import { ReminderService } from './../../services/reminder.service';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { NgForm } from '@angular/forms';
@@ -11,6 +11,7 @@ import { IReminder } from 'src/app/interfaces/reminder.model';
   styleUrls: ['./new-reminder.component.scss']
 })
 export class NewReminderComponent implements OnInit {
+  @ViewChild('timepicker') timepicker;
 
   constructor(
     public dialogRef: MatDialogRef<NewReminderComponent>,
@@ -26,12 +27,11 @@ export class NewReminderComponent implements OnInit {
         id: moment().unix().toString(),
         text: f.value.text,
         color: f.value.color ? f.value.color : this.getRandomColor(),
-        date: f.value.date
+        date: f.value.date,
+        time: String(this.timepicker.timepickerTime)
       };
-
-      console.log(reminder);
-
-      // this.reminderService.addReminder(reminder);
+      this.reminderService.addReminder(reminder);
+      this.close();
     }
   }
 

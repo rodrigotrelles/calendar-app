@@ -16,10 +16,17 @@
       <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
       <mat-datepicker #dp></mat-datepicker>
     </mat-form-field>
+
+    <div class="form__group">
+      <span class="form__label">Time *</span>
+      <ngx-timepicker-field [controlOnly]="true" [format]="24" #timepicker></ngx-timepicker-field>
+    </div>
+
+
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-flat-button (click)="close()">Cancel</button>
-  <button mat-flat-button (click)="createReminder(f)" color="primary" [disabled]="!f.valid"
-    cdkFocusInitial>Save</button>
+  <button mat-flat-button (click)="createReminder(f)" color="primary"
+    [disabled]="!f.valid || !timepicker.timepickerTime" cdkFocusInitial>Save</button>
 </div>

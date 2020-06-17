@@ -5,3 +5,36 @@ mat-divider {
 mat-form-field {
   width: 100%;
 }
+
+.form {
+  &__group {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 2rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid rgba(0,0,0,.42);
+  }
+
+  &__label {
+    margin-right: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+ngx-timepicker-field {
+  flex: 1;
+
+  ::ng-deep {
+    .ngx-timepicker {
+      border-bottom: none;
+    }
+
+    .ngx-timepicker-control {
+      height: 36px !important;
+
+      input {
+        font-size: 1.4rem !important;
+      }
+    }
+  }
+}

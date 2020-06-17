@@ -1,0 +1,40 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 4rem;
+
+  .container {
+    display: flex;
+    align-items: center;
+    max-width: 180rem;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 15rem);
+  grid-template-rows: 3.5rem repeat(4, 15rem);
+  grid-auto-rows: 15rem;
+  border-left: 1px solid black;
+
+  &__header {
+    background-color: #1b6ca8;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__block {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
+}

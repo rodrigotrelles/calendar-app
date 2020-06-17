@@ -1,0 +1,26 @@
+<section>
+  <h1>Current Month number {{calendarService.currentMonth$ | async}}</h1>
+  <div class="container">
+    <button (click)="calendarService.previousMonth()">Previous</button>
+
+    <div class="calendar">
+
+
+      <div class="calendar__header" *ngFor="let day of calendarService.getDays()">
+        <span>{{day}}</span>
+      </div>
+
+      <div class="calendar__block" *ngFor="let day of calendarService.currentDays$ | async">
+        <span>{{day.format('D M')}}</span> -
+        <span>{{day.weekday()}}</span>
+      </div>
+
+
+    </div>
+
+    <button (click)="calendarService.nextMonth()">Next</button>
+
+
+  </div>
+
+</section>

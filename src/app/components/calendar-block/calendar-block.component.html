@@ -5,5 +5,7 @@
     <app-reminder-block *ngIf="reminderService.displayReminder(reminder, day)" [reminder]="reminder">
     </app-reminder-block>
   </ng-container>
+  <app-reminder-view-all *ngIf="reminderService.hiddenRemindersAmount(day) > 0"
+    [amount]="reminderService.hiddenRemindersAmount(day)" [day]="day"></app-reminder-view-all>
   <button class="block__trash" *ngIf="atLeastOneReminder()" (click)="deleteAllReminders()"></button>
 </div>

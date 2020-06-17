@@ -1,4 +1,4 @@
 <p class="reminder" [ngStyle]="{'background-color': reminder.color, 'width': setWidth()}" (click)="viewInfo()">
   <span *ngIf="!reminder.allday" class="reminder__time">{{reminder.date.format('HH:mm')}}</span>
-  <span>{{reminder.text}}</span>
+  <span>{{index}} {{reminder.text}}</span>
 </p>

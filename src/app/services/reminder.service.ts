@@ -1,5 +1,5 @@
+import { IReminder } from 'src/app/interfaces/reminder.model';
 import { Injectable } from '@angular/core';
-import { IReminder } from './../interfaces/reminder.model';
 import { BehaviorSubject } from 'rxjs';
 import { SnackbarService } from './snackbar.service';
 import * as moment from 'moment';
@@ -10,6 +10,7 @@ import * as moment from 'moment';
 export class ReminderService {
   private remindersSource = new BehaviorSubject<IReminder[]>([]);
   public readonly reminders$ = this.remindersSource.asObservable();
+  private maxRemindersPerBlock = 2;
 
   constructor(
     private snackbarService: SnackbarService
@@ -21,31 +22,31 @@ export class ReminderService {
       color: '#67db86',
       allday: false,
       city: 'Montevideo',
-      date:  moment('2020-06-17').add(10, 'hours'),
+      date: moment('2020-06-17').add(10, 'hours'),
       time: '10:00'
     };
 
     this.addReminder(reminder);
 
     const reminder2: IReminder = {
-      id: '1',
+      id: '2',
       text: 'Prueba2',
       color: '#67db86',
       allday: false,
       city: 'Montevideo',
-      date:  moment('2020-06-17').add(12, 'hours'),
+      date: moment('2020-06-17').add(12, 'hours'),
       time: '12:00'
     };
 
     this.addReminder(reminder2);
 
     const reminder3: IReminder = {
-      id: '1',
+      id: '3',
       text: 'Prueba3',
       color: '#67db86',
       allday: false,
       city: 'Montevideo',
-      date:  moment('2020-06-16').add(10, 'hours'),
+      date: moment('2020-06-16').add(10, 'hours'),
       time: '10:00'
     };
 
@@ -53,17 +54,28 @@ export class ReminderService {
 
 
     const reminder4: IReminder = {
-      id: '1',
+      id: '4',
       text: 'Prueba4',
       color: '#67db86',
       allday: true,
       city: 'Montevideo',
-      date:  moment('2020-06-18').add(11, 'hours'),
+      date: moment('2020-06-18').add(11, 'hours'),
       time: '11:00'
     };
 
     this.addReminder(reminder4);
 
+    const reminder5: IReminder = {
+      id: '5',
+      text: 'Prueba5',
+      color: '#67db86',
+      allday: false,
+      city: 'Montevideo',
+      date: moment('2020-06-17').add(12, 'hours'),
+      time: '12:00'
+    };
+
+    this.addReminder(reminder5);
   }
 
   get reminders(): IReminder[] {
@@ -89,9 +101,19 @@ export class ReminderService {
   }
 
   displayReminder(reminder: IReminder, day: moment.Moment) {
-    const reminderDate = moment(reminder.date, 'MM/D/YYYY');
-    const dayDate = moment(day, 'MM/D/YYYY');
-    return reminderDate.isSame(dayDate, 'date');
+    let counter = 0;
+    let display = false;
+    this.reminders.forEach((r: IReminder) => {
+      const rDate = moment(r.date, 'MM/D/YYYY');
+      const dayDate = moment(day, 'MM/D/YYYY');
+      if (rDate.isSame(dayDate, 'date')) {
+        counter++;
+        if (reminder.id === r.id && counter <= this.maxRemindersPerBlock) {
+          display = true;
+        }
+      }
+    });
+    return display;
   }
 
   editReminder(reminder: IReminder) {
@@ -111,5 +133,18 @@ export class ReminderService {
     const filteredList = this.reminders.filter(r => r.date.format('D/MM/yyyy') !== day.format('D/MM/yyyy'));
     this.remindersSource.next(filteredList);
     this.snackbarService.openSnackBar('Reminders removed successfully', 5000);
+  }
+
+  hiddenRemindersAmount(day: moment.Moment) {
+    let counter = 0;
+    this.reminders.forEach((r: IReminder) => {
+      const rDate = moment(r.date, 'MM/D/YYYY');
+      const dayDate = moment(day, 'MM/D/YYYY');
+      if (rDate.isSame(dayDate, 'date')) {
+        counter++;
+      }
+    });
+    const hiddenReminders = counter - this.maxRemindersPerBlock;
+    return hiddenReminders;
   }
 }

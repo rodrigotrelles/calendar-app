@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ReminderBlockComponent implements OnInit {
   @Input() reminder: IReminder;
+  @Input() index: number;
 
   constructor(public dialog: MatDialog) { }
 
@@ -28,4 +29,5 @@ export class ReminderBlockComponent implements OnInit {
       data: {reminder: this.reminder}
     });
   }
+
 }

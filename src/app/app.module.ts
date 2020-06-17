@@ -16,6 +16,8 @@ import { CalendarHeaderComponent } from './components/calendar-header/calendar-h
 import { ReminderBlockComponent } from './components/reminder-block/reminder-block.component';
 import { EditReminderComponent } from './dialogs/edit-reminder/edit-reminder.component';
 import { RemoveAllRemindersComponent } from './dialogs/remove-all-reminders/remove-all-reminders.component';
+import { ReminderViewAllComponent } from './components/reminder-view-all/reminder-view-all.component';
+import { ViewAllRemindersComponent } from './dialogs/view-all-reminders/view-all-reminders.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { RemoveAllRemindersComponent } from './dialogs/remove-all-reminders/remo
     CalendarHeaderComponent,
     ReminderBlockComponent,
     EditReminderComponent,
-    RemoveAllRemindersComponent
+    RemoveAllRemindersComponent,
+    ReminderViewAllComponent,
+    ViewAllRemindersComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NewReminderComponent } from 'src/app/dialogs/new-reminder/new-reminder.component';
 
 @Component({
   selector: 'app-add-reminder-button',
@@ -7,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddReminderButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   addReminder() {
-
+    this.dialog.open(NewReminderComponent, {
+      width: '400px',
+      disableClose: true
+    });
   }
 }

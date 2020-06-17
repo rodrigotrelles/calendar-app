@@ -7,10 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CalendarService {
   private currentDaysSource = new BehaviorSubject<moment.Moment[]>([]);
-  public currentDays$ = this.currentDaysSource.asObservable();
+  public readonly currentDays$ = this.currentDaysSource.asObservable();
 
   private currentMonthSource = new BehaviorSubject<moment.Moment>(moment());
-  public currentMonth$ = this.currentMonthSource.asObservable();
+  public readonly currentMonth$ = this.currentMonthSource.asObservable();
 
   private monthCounter = 0;
 

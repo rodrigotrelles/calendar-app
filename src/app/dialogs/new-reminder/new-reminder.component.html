@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>New Reminder</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  <form #f="ngForm" class="form camp__form">
+    <mat-form-field appearance="standard">
+      <mat-label>Text</mat-label>
+      <input matInput placeholder="Placeholder" maxlength="32" required name="text" ngModel>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Color</mat-label>
+      <input matInput type="color" value="#1b6ca8" name="color" ngModel>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput required [matDatepicker]="dp" name="date" ngModel>
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button (click)="close()">Cancel</button>
+  <button mat-flat-button (click)="createReminder(f)" color="primary" [disabled]="!f.valid"
+    cdkFocusInitial>Save</button>
+</div>

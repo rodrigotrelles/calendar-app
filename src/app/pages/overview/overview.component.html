@@ -1,26 +1,16 @@
 <section>
-  <h1>Current Month number {{calendarService.currentMonth$ | async}}</h1>
-  <div class="container">
-    <button (click)="calendarService.previousMonth()">Previous</button>
-
-    <div class="calendar">
-
-
-      <div class="calendar__header" *ngFor="let day of calendarService.getDays()">
-        <span>{{day}}</span>
-      </div>
-
-      <div class="calendar__block" *ngFor="let day of calendarService.currentDays$ | async">
-        <span>{{day.format('D M')}}</span> -
-        <span>{{day.weekday()}}</span>
-      </div>
-
-
-    </div>
-
-    <button (click)="calendarService.nextMonth()">Next</button>
-
-
+  <div class="header">
+    <button (click)="calendarService.previousMonth()"><</button>
+    <h1>{{(calendarService.currentMonth$ | async).format('MMMM YYYY')}}</h1>
+    <button (click)="calendarService.nextMonth()">></button>
   </div>
-
+  <div class="calendar">
+    <div class="calendar__header" *ngFor="let day of calendarService.getDays()">
+      <span>{{day}}</span>
+    </div>
+    <div class="calendar__block" *ngFor="let day of calendarService.currentDays$ | async"
+    [ngClass]="{'other-month': dayOfOtherMonth(day, (calendarService.currentMonth$ | async)), 'weekend': isWeekend(day)}">
+      <span>{{day.format('D')}}</span>
+    </div>
+  </div>
 </section>

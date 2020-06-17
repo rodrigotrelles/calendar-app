@@ -9,7 +9,7 @@ export class CalendarService {
   private currentDaysSource = new BehaviorSubject<moment.Moment[]>([]);
   public currentDays$ = this.currentDaysSource.asObservable();
 
-  private currentMonthSource = new BehaviorSubject<string>(moment().format('M'));
+  private currentMonthSource = new BehaviorSubject<moment.Moment>(moment());
   public currentMonth$ = this.currentMonthSource.asObservable();
 
   private monthCounter = 0;
@@ -23,7 +23,7 @@ export class CalendarService {
 
   private getDaysArrayByMonth() {
     const newMonth = moment().add(this.monthCounter, 'M');
-    this.currentMonthSource.next(newMonth.format('M'));
+    this.currentMonthSource.next(newMonth);
     let daysInMonth = newMonth.daysInMonth();
     const arrDays = [];
     while (daysInMonth) {
@@ -48,7 +48,7 @@ export class CalendarService {
     let lastDayOfMonth = arrDays[arrDays.length - 1].weekday();
     daysCounter = 1;
     const lastDayCounter = arrDays.length - 1;
-    while (lastDayOfMonth > 0 && lastDayOfMonth < 6) {
+    while (lastDayOfMonth < 6) {
       const nextDay = arrDays[lastDayCounter].clone().add(daysCounter, 'd');
       arrDays.push(nextDay);
       daysCounter++;

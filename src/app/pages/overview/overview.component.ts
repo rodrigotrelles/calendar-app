@@ -17,4 +17,11 @@ export class OverviewComponent implements OnInit {
     this.calendarService.loadCurrentMonth();
   }
 
+  dayOfOtherMonth(day: moment.Moment, currentMonth: moment.Moment) {
+    return day.format('M') === currentMonth.format('M') ? false : true;
+  }
+
+  isWeekend(day: moment.Moment) {
+    return (day.weekday() === 0) || (day.weekday() === 6) ? true : false;
+  }
 }

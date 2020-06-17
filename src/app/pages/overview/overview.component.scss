@@ -1,31 +1,41 @@
+$blue: #1b6ca8;
+$light-grey: rgba(black, .065);
+
 section {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem 4rem;
+}
 
-  .container {
-    display: flex;
-    align-items: center;
-    max-width: 180rem;
-    width: 100%;
-    justify-content: space-evenly;
+.header {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  margin-bottom: 1rem;
+
+  h1 {
+    margin: 0 1rem;
+    text-align: center;
+    min-width: 15rem;
   }
 }
 
 .calendar {
+  max-width: 180rem;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(7, 15rem);
-  grid-template-rows: 3.5rem repeat(4, 15rem);
-  grid-auto-rows: 15rem;
+  grid-template-columns: repeat(7, 12rem);
+  grid-template-rows: min-content repeat(4, 12rem);
+  grid-auto-rows: 12rem;
   border-left: 1px solid black;
 
   &__header {
-    background-color: #1b6ca8;
+    background-color: $blue;
     color: white;
     text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 500;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     display: flex;
@@ -36,5 +46,18 @@ section {
   &__block {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
+    padding: .2rem .5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    &.other-month {
+      background-color: $light-grey;
+      color: grey !important;
+    }
+
+    &.weekend {
+      background-color: $light-grey;
+      color: $blue;
+    }
   }
 }

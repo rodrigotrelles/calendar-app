@@ -1,8 +1,12 @@
 <section>
   <div class="header">
-    <button mat-stroked-button color="primary" (click)="calendarService.previousMonth()"><</button>
+    <button class="header__button" mat-stroked-button color="primary" (click)="calendarService.previousMonth()">
+      <img src="assets/icons/left.svg" alt="">
+    </button>
     <h1>{{(calendarService.currentMonth$ | async).format('MMMM YYYY')}}</h1>
-    <button mat-stroked-button color="primary" (click)="calendarService.nextMonth()">></button>
+    <button class="header__button" mat-stroked-button color="primary" (click)="calendarService.nextMonth()">
+      <img src="assets/icons/right.svg" alt="">
+    </button>
   </div>
   <mat-divider></mat-divider>
   <div class="calendar">
@@ -10,7 +14,7 @@
       <span>{{day}}</span>
     </div>
     <div class="calendar__block" *ngFor="let day of calendarService.currentDays$ | async"
-    [ngClass]="{'other-month': dayOfOtherMonth(day, (calendarService.currentMonth$ | async)), 'weekend': isWeekend(day)}">
+      [ngClass]="{'other-month': dayOfOtherMonth(day, (calendarService.currentMonth$ | async)), 'weekend': isWeekend(day)}">
       <span>{{day.format('D')}}</span>
     </div>
   </div>

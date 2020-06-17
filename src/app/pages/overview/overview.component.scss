@@ -19,6 +19,23 @@ section {
     text-align: center;
     min-width: 20rem;
   }
+
+  &__button {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    min-width: unset !important;
+
+    img {
+      height: 1.8rem;
+      width: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.mat-stroked-button {
+  line-height: 2.8 !important;
 }
 
 .calendar {

@@ -1,9 +1,10 @@
 <section>
   <div class="header">
-    <button (click)="calendarService.previousMonth()"><</button>
+    <button mat-stroked-button color="primary" (click)="calendarService.previousMonth()"><</button>
     <h1>{{(calendarService.currentMonth$ | async).format('MMMM YYYY')}}</h1>
-    <button (click)="calendarService.nextMonth()">></button>
+    <button mat-stroked-button color="primary" (click)="calendarService.nextMonth()">></button>
   </div>
+  <mat-divider></mat-divider>
   <div class="calendar">
     <div class="calendar__header" *ngFor="let day of calendarService.getDays()">
       <span>{{day}}</span>

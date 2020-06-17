@@ -4,7 +4,7 @@ $light-grey: rgba(black, .065);
 section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   padding: 2rem 4rem;
 }
 
@@ -12,18 +12,17 @@ section {
   display: flex;
   align-items: center;
   justify-self: center;
-  margin-bottom: 1rem;
+  margin: 0 auto 2rem auto;
 
   h1 {
     margin: 0 1rem;
     text-align: center;
-    min-width: 15rem;
+    min-width: 20rem;
   }
 }
 
 .calendar {
-  max-width: 180rem;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
   display: grid;
   grid-template-columns: repeat(7, 12rem);
   grid-template-rows: min-content repeat(4, 12rem);
@@ -41,6 +40,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    padding: .2rem 0;
   }
 
   &__block {

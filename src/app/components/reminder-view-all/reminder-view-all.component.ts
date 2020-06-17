@@ -19,7 +19,6 @@ export class ReminderViewAllComponent implements OnInit {
   seeAll() {
     this.dialog.open(ViewAllRemindersComponent, {
       width: '300px',
-      disableClose: true,
       data: {day: this.day}
     });
   }

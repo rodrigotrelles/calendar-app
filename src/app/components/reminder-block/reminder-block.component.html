@@ -1,4 +1,21 @@
-<p class="reminder" [ngStyle]="{'background-color': reminder.color, 'width': setWidth()}" (click)="viewInfo()">
-  <span *ngIf="!reminder.allday" class="reminder__time">{{reminder.date.format('HH:mm')}}</span>
-  <span>{{index}} {{reminder.text}}</span>
-</p>
+<div class="container">
+  <div class="reminder" [ngStyle]="{'background-color': reminder.color, 'width': setWidth()}" (click)="viewInfo()"
+    (mouseenter)="onMouseOver()" (mouseleave)="onMouseOut()">
+    <span *ngIf="!reminder.allday" class="reminder__time">{{reminder.date.format('HH:mm')}}</span>
+    <span>{{index}} {{reminder.text}}</span>
+  </div>
+
+  <div class="tooltip" *ngIf="weatherService.forecast">
+    <img src="assets/icons/forecast.png" alt="">
+    <span>Reminder: {{reminder.text}}</span>
+    <span>City: {{reminder.city}}</span>
+    <span>Date: {{reminder.date.format('LLL')}}</span>
+    <ng-container *ngIf="weatherService.forecast !== 'no'">
+      <span>Forecast: {{capitalizeWord((weatherService.forecast$ | async).weather[0].description)}}</span>
+      <span>Humidity: {{(weatherService.forecast$ | async).main.humidity}}%</span>
+    </ng-container>
+    <ng-container *ngIf="weatherService.forecast === 'no'">
+      <span>No forecast available</span>
+    </ng-container>
+  </div>
+</div>

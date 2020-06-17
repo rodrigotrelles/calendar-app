@@ -1,6 +1,7 @@
+import { WeatherService } from './../../services/weather.service';
 import { EditReminderComponent } from './../../dialogs/edit-reminder/edit-reminder.component';
 import { IReminder } from './../../interfaces/reminder.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -12,7 +13,10 @@ export class ReminderBlockComponent implements OnInit {
   @Input() reminder: IReminder;
   @Input() index: number;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public weatherService: WeatherService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,8 +30,19 @@ export class ReminderBlockComponent implements OnInit {
     this.dialog.open(EditReminderComponent, {
       width: '400px',
       disableClose: true,
-      data: {reminder: this.reminder}
+      data: { reminder: this.reminder }
     });
   }
 
+  onMouseOver() {
+    this.weatherService.getCityWeatherForDate(this.reminder.city, this.reminder.date);
+  }
+
+  onMouseOut() {
+    this.weatherService.cleanForecast();
+  }
+
+  capitalizeWord(word: string) {
+    return this.weatherService.capitalize(word);
+  }
 }

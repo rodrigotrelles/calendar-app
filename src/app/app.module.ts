@@ -11,13 +11,13 @@ import { AddReminderButtonComponent } from './components/add-reminder-button/add
 import { CalendarBlockComponent } from './components/calendar-block/calendar-block.component';
 import { NewReminderComponent } from './dialogs/new-reminder/new-reminder.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { CalendarHeaderComponent } from './components/calendar-header/calendar-header.component';
 import { ReminderBlockComponent } from './components/reminder-block/reminder-block.component';
 import { EditReminderComponent } from './dialogs/edit-reminder/edit-reminder.component';
 import { RemoveAllRemindersComponent } from './dialogs/remove-all-reminders/remove-all-reminders.component';
 import { ReminderViewAllComponent } from './components/reminder-view-all/reminder-view-all.component';
 import { ViewAllRemindersComponent } from './dialogs/view-all-reminders/view-all-reminders.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,10 +38,10 @@ import { ViewAllRemindersComponent } from './dialogs/view-all-reminders/view-all
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

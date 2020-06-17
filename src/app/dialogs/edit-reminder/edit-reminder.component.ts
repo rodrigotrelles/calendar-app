@@ -50,7 +50,7 @@ export class EditReminderComponent implements OnInit {
       date.add(timeData[0], 'hours').add(timeData[1], 'minutes');
       if (date === this.reminder.date) {
         const previousTimeData = this.reminder.time.split(':');
-        date.add(-previousTimeData[0], 'hours').add(-previousTimeData[1], 'minutes')
+        date.add(-previousTimeData[0], 'hours').add(-previousTimeData[1], 'minutes');
       }
     }
     if (f.valid) {
@@ -72,4 +72,8 @@ export class EditReminderComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  deleteReminder() {
+    this.reminderService.removeReminder(this.reminder.id);
+    this.dialogRef.close();
+  }
 }

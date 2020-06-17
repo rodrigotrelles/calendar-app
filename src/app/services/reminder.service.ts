@@ -48,6 +48,7 @@ export class ReminderService {
   removeReminder(id: string) {
     const newReminders = this.reminders.filter(reminder => reminder.id !== id);
     this.remindersSource.next(newReminders);
+    this.snackbarService.openSnackBar('Reminder removed successfully', 5000);
   }
 
   displayReminder(reminder: IReminder, day: moment.Moment) {

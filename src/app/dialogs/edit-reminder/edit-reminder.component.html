@@ -1,4 +1,8 @@
-<h1 mat-dialog-title>New Reminder</h1>
+<h1 mat-dialog-title>
+  <span>New Reminder</span>
+  <button mat-mini-fab color="warn" (click)="deleteReminder()">
+    <mat-icon>delete</mat-icon>
+  </button></h1>
 <mat-divider></mat-divider>
 <div mat-dialog-content>
   <form #f="ngForm" class="form camp__form">
@@ -35,6 +39,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-flat-button (click)="close()">Cancel</button>
-  <button mat-flat-button (click)="editReminder(f)" color="primary" [disabled]="!f.valid"
-    cdkFocusInitial>Save</button>
+  <button mat-flat-button (click)="editReminder(f)" color="primary" [disabled]="!f.valid" cdkFocusInitial>Save</button>
 </div>

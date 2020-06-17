@@ -21,7 +21,7 @@ export class ReminderService {
       text: 'Prueba',
       color: '#67db86',
       allday: false,
-      city: 'Montevideo',
+      city: 'MONTEVIDEO',
       date: moment('2020-06-17').add(10, 'hours'),
       time: '10:00'
     };
@@ -33,7 +33,7 @@ export class ReminderService {
       text: 'Prueba2',
       color: '#67db86',
       allday: false,
-      city: 'Montevideo',
+      city: 'MONTEVIDEO',
       date: moment('2020-06-17').add(12, 'hours'),
       time: '12:00'
     };
@@ -45,7 +45,7 @@ export class ReminderService {
       text: 'Prueba3',
       color: '#67db86',
       allday: false,
-      city: 'Montevideo',
+      city: 'MONTEVIDEO',
       date: moment('2020-06-16').add(10, 'hours'),
       time: '10:00'
     };
@@ -58,7 +58,7 @@ export class ReminderService {
       text: 'Prueba4',
       color: '#67db86',
       allday: true,
-      city: 'Montevideo',
+      city: 'MONTEVIDEO',
       date: moment('2020-06-18').add(11, 'hours'),
       time: '11:00'
     };
@@ -70,7 +70,7 @@ export class ReminderService {
       text: 'Prueba5',
       color: '#67db86',
       allday: false,
-      city: 'Montevideo',
+      city: 'MONTEVIDEO',
       date: moment('2020-06-17').add(12, 'hours'),
       time: '12:00'
     };

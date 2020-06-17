@@ -1,11 +1,11 @@
 import { ReminderService } from './../../services/reminder.service';
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { NgForm } from '@angular/forms';
 import { IReminder } from 'src/app/interfaces/reminder.model';
-import { NgxTimepickerFieldComponent } from 'ngx-material-timepicker';
 import { time } from '../../constants/time';
+import { cities } from '../../constants/cities';
 
 @Component({
   selector: 'app-new-reminder',
@@ -14,7 +14,9 @@ import { time } from '../../constants/time';
 })
 export class NewReminderComponent implements OnInit {
   public time = time;
-  public selected = '00:00';
+  public cities = cities;
+  public selectedTime = '00:00';
+  public selectedCity = 'MONTEVIDEO';
   public allday = false;
 
   constructor(
@@ -28,17 +30,17 @@ export class NewReminderComponent implements OnInit {
   createReminder(f: NgForm) {
     const date = f.value.date as moment.Moment;
     if (!this.allday) {
-      const timeData = this.selected.split(':');
+      const timeData = this.selectedTime.split(':');
       date.add(timeData[0], 'hours').add(timeData[1], 'minutes');
     }
     if (f.valid) {
       const reminder: IReminder = {
         id: moment().unix().toString(),
         text: f.value.text,
-        city: f.value.city,
+        city: this.selectedCity,
         color: f.value.color || this.getRandomColor(),
         date,
-        time: this.selected,
+        time: this.selectedTime,
         allday: this.allday
       };
       this.reminderService.addReminder(reminder);

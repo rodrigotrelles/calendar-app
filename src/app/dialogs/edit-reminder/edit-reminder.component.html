@@ -12,7 +12,9 @@
     </mat-form-field>
     <mat-form-field appearance="standard">
       <mat-label>City</mat-label>
-      <input matInput placeholder="Your city here" maxlength="50" required name="city" ngModel>
+      <mat-select [(value)]="selectedCity" [disabled]="allday">
+        <mat-option class="city" *ngFor="let city of cities" value="{{city}}">{{city}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Date</mat-label>
@@ -23,7 +25,7 @@
     <div class="group">
       <mat-form-field appearance="standard">
         <mat-label>Time</mat-label>
-        <mat-select [(value)]="selected" [disabled]="allday">
+        <mat-select [(value)]="selectedTime" [disabled]="allday">
           <ng-container *ngFor="let hour of time.hours">
             <mat-option *ngFor="let minute of time.minutes" value="{{hour}}:{{minute}}">{{hour}}:{{minute}}</mat-option>
           </ng-container>

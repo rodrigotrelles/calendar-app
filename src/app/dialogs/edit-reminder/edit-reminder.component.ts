@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReminderService } from 'src/app/services/reminder.service';
 import { NgForm } from '@angular/forms';
 import { time } from 'src/app/constants/time';
+import { cities } from '../../constants/cities';
 
 @Component({
   selector: 'app-edit-reminder',
@@ -14,7 +15,9 @@ export class EditReminderComponent implements OnInit {
   @ViewChild('f', { static: false }) f;
 
   public time = time;
-  public selected: string;
+  public cities = cities;
+  public selectedTime: string;
+  public selectedCity: string;
   public allday: boolean;
   public reminder: IReminder;
 
@@ -31,12 +34,12 @@ export class EditReminderComponent implements OnInit {
   fillForm() {
     setTimeout(() => {
       this.reminder = this.data.reminder;
-      this.selected = this.reminder.time;
+      this.selectedTime = this.reminder.time;
+      this.selectedCity = this.reminder.city;
       this.allday = this.reminder.allday;
       const reminder = {
         text: this.reminder.text,
         color: this.reminder.color,
-        city: this.reminder.city,
         date: this.reminder.date,
       };
       this.f.form.setValue(reminder);
@@ -46,7 +49,7 @@ export class EditReminderComponent implements OnInit {
   editReminder(f: NgForm) {
     const date = f.value.date as moment.Moment;
     if (!this.allday) {
-      const timeData = this.selected.split(':');
+      const timeData = this.selectedTime.split(':');
       date.add(timeData[0], 'hours').add(timeData[1], 'minutes');
       if (date === this.reminder.date) {
         const previousTimeData = this.reminder.time.split(':');
@@ -57,10 +60,10 @@ export class EditReminderComponent implements OnInit {
       const reminder: IReminder = {
         id: this.reminder.id,
         text: f.value.text,
-        city: f.value.city,
+        city: this.selectedCity,
         color: f.value.color,
         date,
-        time: this.selected,
+        time: this.selectedTime,
         allday: this.allday
       };
       this.reminderService.editReminder(reminder);

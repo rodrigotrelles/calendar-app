@@ -28,10 +28,6 @@ $light-grey: rgba(black, 0.065);
     background-color: rgba($blue, 0.2);
   }
 
-  &:hover {
-    background-color: rgba($blue, 0.3);
-  }
-
   &__number {
     &:hover {
       text-decoration: underline;

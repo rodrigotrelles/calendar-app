@@ -10,9 +10,8 @@ mat-form-field {
   &__group {
     display: flex;
     align-items: baseline;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 1.34375em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
   }
 
@@ -22,26 +21,22 @@ mat-form-field {
   }
 }
 
-ngx-timepicker-field {
-  flex: 1;
-
-  ::ng-deep {
-    .ngx-timepicker {
-      border-bottom: none;
-    }
-
-    .ngx-timepicker-control {
-      height: 36px !important;
-
-      input {
-        font-size: 1.4rem !important;
-      }
-    }
-  }
-}
-
 .mat-dialog-actions {
   button {
     flex: 1;
   }
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+mat-checkbox {
+  text-align: right;
 }

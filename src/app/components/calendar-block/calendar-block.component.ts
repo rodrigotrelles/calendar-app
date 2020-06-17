@@ -1,3 +1,4 @@
+import { ReminderService } from './../../services/reminder.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { CalendarService } from 'src/app/services/calendar.service';
 import * as moment from 'moment';
@@ -11,21 +12,22 @@ export class CalendarBlockComponent implements OnInit {
   @Input() day: moment.Moment;
 
   constructor(
-    public calendarService: CalendarService
+    public calendarService: CalendarService,
+    public reminderService: ReminderService
   ) { }
 
   ngOnInit(): void {
   }
 
   dayOfOtherMonth(day: moment.Moment, currentMonth: moment.Moment) {
-    return day.format('M') === currentMonth.format('M') ? false : true;
+    return day.format('M') !== currentMonth.format('M');
   }
 
   isWeekend(day: moment.Moment) {
-    return (day.weekday() === 0) || (day.weekday() === 6) ? true : false;
+    return (day.weekday() === 0) || (day.weekday() === 6);
   }
 
   today(day: moment.Moment) {
-    return day.format('D MM YYYY') === moment().format('D MM YYYY') ? true : false;
+    return day.format('D MM YYYY') === moment().format('D MM YYYY');
   }
 }

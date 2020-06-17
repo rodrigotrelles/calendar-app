@@ -13,6 +13,7 @@ import { NewReminderComponent } from './dialogs/new-reminder/new-reminder.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { CalendarHeaderComponent } from './components/calendar-header/calendar-header.component';
+import { ReminderBlockComponent } from './components/reminder-block/reminder-block.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CalendarHeaderComponent } from './components/calendar-header/calendar-h
     AddReminderButtonComponent,
     CalendarBlockComponent,
     NewReminderComponent,
-    CalendarHeaderComponent
+    CalendarHeaderComponent,
+    ReminderBlockComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
 <div class="block"
   [ngClass]="{'other-month': dayOfOtherMonth(day, (calendarService.currentMonth$ | async)), 'weekend': isWeekend(day), 'today': today(day)}">
   <span class="block__number">{{day.format('D')}}</span>
+  <ng-container *ngFor="let reminder of reminderService.reminders$ | async">
+    <app-reminder-block *ngIf="reminderService.displayReminder(reminder, day)" [reminder]="reminder"></app-reminder-block>
+  </ng-container>
 </div>

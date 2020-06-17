@@ -12,6 +12,7 @@ export class AddReminderButtonComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.addReminder();
   }
 
   addReminder() {

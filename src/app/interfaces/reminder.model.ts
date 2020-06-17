@@ -5,4 +5,5 @@ export interface IReminder {
   time: string;
   color: string;
   city: string;
+  allday: boolean;
 }

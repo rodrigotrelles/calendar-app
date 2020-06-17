@@ -38,7 +38,7 @@ export class NewReminderComponent implements OnInit {
         city: f.value.city,
         color: f.value.color || this.getRandomColor(),
         date,
-        time: !this.allday ? this.selected : '',
+        time: this.selected,
         allday: this.allday
       };
       this.reminderService.addReminder(reminder);

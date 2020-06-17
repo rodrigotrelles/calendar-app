@@ -1,5 +1,7 @@
+import { EditReminderComponent } from './../../dialogs/edit-reminder/edit-reminder.component';
 import { IReminder } from './../../interfaces/reminder.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reminder-block',
@@ -9,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReminderBlockComponent implements OnInit {
   @Input() reminder: IReminder;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +19,13 @@ export class ReminderBlockComponent implements OnInit {
   setWidth() {
     const calendar = document.getElementById('calendar');
     return calendar.offsetWidth;
+  }
+
+  viewInfo() {
+    this.dialog.open(EditReminderComponent, {
+      width: '400px',
+      disableClose: true,
+      data: {reminder: this.reminder}
+    });
   }
 }

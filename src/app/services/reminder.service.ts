@@ -1,5 +1,5 @@
-import { IReminder } from './../interfaces/reminder.model';
 import { Injectable } from '@angular/core';
+import { IReminder } from './../interfaces/reminder.model';
 import { BehaviorSubject } from 'rxjs';
 import { SnackbarService } from './snackbar.service';
 import * as moment from 'moment';
@@ -13,7 +13,21 @@ export class ReminderService {
 
   constructor(
     private snackbarService: SnackbarService
-  ) { }
+  ) {
+
+    const reminder: IReminder = {
+      id: '1',
+      text: 'Prueba',
+      color: '#67db86',
+      allday: false,
+      city: 'Montevideo',
+      date:  moment('2020-06-17').add(10, 'hours'),
+      time: '10:00'
+    };
+
+    this.addReminder(reminder);
+
+  }
 
   get reminders(): IReminder[] {
     return this.remindersSource.getValue();
@@ -40,5 +54,18 @@ export class ReminderService {
     const reminderDate = moment(reminder.date, 'MM/D/YYYY');
     const dayDate = moment(day, 'MM/D/YYYY');
     return reminderDate.isSame(dayDate, 'date');
+  }
+
+  editReminder(reminder: IReminder) {
+    const edited = this.reminders.find(r => r.id === reminder.id);
+    edited.text = reminder.text;
+    edited.color = reminder.color;
+    edited.allday = reminder.allday;
+    edited.city = reminder.city;
+    edited.time = reminder.time;
+    edited.date = reminder.date;
+    const sortedList = this.sortReminders([...this.reminders]);
+    this.remindersSource.next(sortedList);
+    this.snackbarService.openSnackBar('Reminder edited successfully', 5000);
   }
 }

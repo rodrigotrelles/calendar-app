@@ -147,4 +147,10 @@ export class ReminderService {
     const hiddenReminders = counter - this.maxRemindersPerBlock;
     return hiddenReminders;
   }
+
+  sameDay(reminder: IReminder, day: moment.Moment) {
+    const rDate = moment(reminder.date, 'MM/D/YYYY');
+    const dayDate = moment(day, 'MM/D/YYYY');
+    return rDate.isSame(dayDate, 'date');
+  }
 }

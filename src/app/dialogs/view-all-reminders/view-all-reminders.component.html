@@ -1,1 +1,6 @@
-<p>view-all-reminders works!</p>
+<div class="reminders">
+  <ng-container *ngFor="let reminder of reminderService.reminders$ | async">
+    <app-reminder-block *ngIf="reminderService.sameDay(reminder, data.day)" [reminder]="reminder">
+    </app-reminder-block>
+  </ng-container>
+</div>

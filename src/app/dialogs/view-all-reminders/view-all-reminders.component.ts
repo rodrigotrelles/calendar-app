@@ -12,7 +12,7 @@ export class ViewAllRemindersComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ViewAllRemindersComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    private reminderService: ReminderService
+    public reminderService: ReminderService
   ) { }
 
   ngOnInit(): void {

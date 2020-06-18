@@ -19,6 +19,10 @@ describe('NewReminderComponent', () => {
   let fixture: ComponentFixture<NewReminderComponent>;
   let de: DebugElement;
 
+  const dialogMock = {
+    close: () => { }
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NewReminderComponent],
@@ -31,12 +35,12 @@ describe('NewReminderComponent', () => {
       ],
       providers: [
         {
-          provide: MatDialogRef,
+          provide: MAT_DIALOG_DATA,
           useValue: {}
         },
         {
-          provide: MAT_DIALOG_DATA,
-          useValue: {}
+          provide: MatDialogRef,
+          useValue: dialogMock
         },
         MatDialog,
         ReminderService

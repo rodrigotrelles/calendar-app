@@ -1,3 +1,4 @@
+import { ReminderService } from 'src/app/services/reminder.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'calendar-app';
+  constructor(private reminderService: ReminderService) {
+    this.reminderService.addFakeData();
+  }
 }

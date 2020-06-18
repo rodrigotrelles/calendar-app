@@ -14,69 +14,7 @@ export class ReminderService {
 
   constructor(
     private snackbarService: SnackbarService
-  ) {
-
-    const reminder: IReminder = {
-      id: '1',
-      text: 'Prueba',
-      color: '#67db86',
-      allday: false,
-      city: 'LONDON',
-      date: moment('2020-06-17').add(10, 'hours'),
-      time: '10:00'
-    };
-
-    this.addReminder(reminder);
-
-    const reminder2: IReminder = {
-      id: '2',
-      text: 'Prueba2',
-      color: '#67db86',
-      allday: false,
-      city: 'MONTEVIDEO',
-      date: moment('2020-06-18').add(12, 'hours'),
-      time: '12:00'
-    };
-
-    this.addReminder(reminder2);
-
-    // const reminder3: IReminder = {
-    //   id: '3',
-    //   text: 'Prueba3',
-    //   color: '#67db86',
-    //   allday: false,
-    //   city: 'MONTEVIDEO',
-    //   date: moment('2020-06-16').add(10, 'hours'),
-    //   time: '10:00'
-    // };
-
-    // this.addReminder(reminder3);
-
-
-    // const reminder4: IReminder = {
-    //   id: '4',
-    //   text: 'Prueba4',
-    //   color: '#67db86',
-    //   allday: true,
-    //   city: 'MONTEVIDEO',
-    //   date: moment('2020-06-18').add(11, 'hours'),
-    //   time: '11:00'
-    // };
-
-    // this.addReminder(reminder4);
-
-    // const reminder5: IReminder = {
-    //   id: '5',
-    //   text: 'Prueba5',
-    //   color: '#67db86',
-    //   allday: false,
-    //   city: 'MONTEVIDEO',
-    //   date: moment('2020-06-17').add(12, 'hours'),
-    //   time: '12:00'
-    // };
-
-    // this.addReminder(reminder5);
-  }
+  ) {}
 
   get reminders(): IReminder[] {
     return this.remindersSource.getValue();
@@ -152,5 +90,68 @@ export class ReminderService {
     const rDate = moment(reminder.date, 'MM/D/YYYY');
     const dayDate = moment(day, 'MM/D/YYYY');
     return rDate.isSame(dayDate, 'date');
+  }
+
+  addFakeData() {
+    const reminder: IReminder = {
+      id: '1',
+      text: 'Prueba',
+      color: '#67db86',
+      allday: false,
+      city: 'LONDON',
+      date: moment('2020-06-17').add(10, 'hours'),
+      time: '10:00'
+    };
+
+    this.addReminder(reminder);
+
+    const reminder2: IReminder = {
+      id: '2',
+      text: 'Prueba2',
+      color: '#67db86',
+      allday: false,
+      city: 'MONTEVIDEO',
+      date: moment('2020-06-18').add(12, 'hours'),
+      time: '12:00'
+    };
+
+    this.addReminder(reminder2);
+
+    const reminder3: IReminder = {
+      id: '3',
+      text: 'Prueba3',
+      color: '#67db86',
+      allday: false,
+      city: 'MONTEVIDEO',
+      date: moment('2020-06-16').add(10, 'hours'),
+      time: '10:00'
+    };
+
+    this.addReminder(reminder3);
+
+
+    const reminder4: IReminder = {
+      id: '4',
+      text: 'Prueba4',
+      color: '#67db86',
+      allday: true,
+      city: 'MONTEVIDEO',
+      date: moment('2020-06-18').add(11, 'hours'),
+      time: '11:00'
+    };
+
+    this.addReminder(reminder4);
+
+    const reminder5: IReminder = {
+      id: '5',
+      text: 'Prueba5',
+      color: '#67db86',
+      allday: false,
+      city: 'MONTEVIDEO',
+      date: moment('2020-06-17').add(12, 'hours'),
+      time: '12:00'
+    };
+
+    this.addReminder(reminder5);
   }
 }

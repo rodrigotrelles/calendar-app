@@ -47,7 +47,19 @@ export class EditReminderComponent implements OnInit {
   }
 
   editReminder(f: NgForm) {
+    if (!this.selectedCity) {
+      return false;
+    }
+    if (!this.selectedTime) {
+      return false;
+    }
     const date = f.value.date as moment.Moment;
+    if (!date) {
+      return false;
+    }
+    if (f.value.text.length === 0 || f.value.text.length > 32) {
+      return false;
+    }
     if (!this.allday) {
       const timeData = this.selectedTime.split(':');
       date.add(timeData[0], 'hours').add(timeData[1], 'minutes');

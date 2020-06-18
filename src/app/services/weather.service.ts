@@ -11,9 +11,13 @@ export class WeatherService {
   private forecastSource = new BehaviorSubject<any>(null);
   public readonly forecast$ = this.forecastSource.asObservable();
 
+  public loaderSource = new BehaviorSubject<boolean>(false);
+  public isLoading$ = this.loaderSource.asObservable();
+
   constructor(private http: HttpClient) { }
 
   getCityWeatherForDate(city: string, dayPicked: moment.Moment) {
+    this.loaderSource.next(true);
     const url = `${environment.weather.url}?`;
     const params = `${environment.weather.params.city}${this.capitalize(city)}&${environment.weather.params.id}${environment.weather.key}`;
     this.http.get(`${url}${params}`).subscribe(result => {
@@ -31,6 +35,7 @@ export class WeatherService {
         }
       }
       this.forecastSource.next(forecast);
+      this.loaderSource.next(false);
     });
   }
 

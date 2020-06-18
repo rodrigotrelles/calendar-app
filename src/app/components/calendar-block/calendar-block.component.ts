@@ -35,7 +35,7 @@ export class CalendarBlockComponent implements OnInit {
   }
 
   atLeastOneReminder() {
-    return this.reminderService.reminders.some(el => el.date.date() === this.day.date());
+    return this.reminderService.reminders.some(el => el.date.format('YYYY-MM-D') === this.day.format('YYYY-MM-D'));
   }
 
   deleteAllReminders() {

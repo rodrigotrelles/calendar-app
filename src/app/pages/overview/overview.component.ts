@@ -21,7 +21,9 @@ export class OverviewComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     const width = window.innerWidth;
-    if (width < 600) {
+    if (width < 500) {
+      this.reminderService.maxRemindersPerBlock = 0;
+    } else if (width < 600) {
       this.reminderService.maxRemindersPerBlock = 1;
     } else {
       this.reminderService.maxRemindersPerBlock = 2;

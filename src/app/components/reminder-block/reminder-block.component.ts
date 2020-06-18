@@ -12,7 +12,6 @@ import { MatDialog } from '@angular/material/dialog';
 export class ReminderBlockComponent implements OnInit, AfterContentChecked {
   @Input() reminder: IReminder;
   @Input() index: number;
-
   itemWidth: number;
 
   constructor(

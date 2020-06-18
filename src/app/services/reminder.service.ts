@@ -10,7 +10,7 @@ import * as moment from 'moment';
 export class ReminderService {
   private remindersSource = new BehaviorSubject<IReminder[]>([]);
   public readonly reminders$ = this.remindersSource.asObservable();
-  private maxRemindersPerBlock = 2;
+  public maxRemindersPerBlock = 2;
 
   constructor(
     private snackbarService: SnackbarService

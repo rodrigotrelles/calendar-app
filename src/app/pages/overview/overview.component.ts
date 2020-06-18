@@ -1,5 +1,6 @@
+import { ReminderService } from 'src/app/services/reminder.service';
 import { CalendarService } from './../../services/calendar.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-overview',
@@ -9,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class OverviewComponent implements OnInit {
 
   constructor(
-    public calendarService: CalendarService
+    public calendarService: CalendarService,
+    private reminderService: ReminderService
   ) { }
 
   ngOnInit(): void {
+    this.onResize(null);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    const width = window.innerWidth;
+    if (width < 600) {
+      this.reminderService.maxRemindersPerBlock = 1;
+    } else {
+      this.reminderService.maxRemindersPerBlock = 2;
+    }
   }
 }

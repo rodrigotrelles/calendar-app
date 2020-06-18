@@ -6,11 +6,6 @@
   grid-auto-rows: 12rem;
   border-left: 1px solid black;
 
-  @media only screen and (max-width: 800px) {
-    grid-template-rows: min-content repeat(4, 10rem);
-    grid-auto-rows: 10rem;
-  }
-
   app-calendar-header:last-of-type {
     border-right: 1px solid black;
   }

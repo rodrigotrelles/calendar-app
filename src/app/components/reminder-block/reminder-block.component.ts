@@ -1,7 +1,7 @@
 import { WeatherService } from './../../services/weather.service';
 import { EditReminderComponent } from './../../dialogs/edit-reminder/edit-reminder.component';
 import { IReminder } from './../../interfaces/reminder.model';
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, AfterContentChecked } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -9,9 +9,11 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './reminder-block.component.html',
   styleUrls: ['./reminder-block.component.scss']
 })
-export class ReminderBlockComponent implements OnInit {
+export class ReminderBlockComponent implements OnInit, AfterContentChecked {
   @Input() reminder: IReminder;
   @Input() index: number;
+
+  itemWidth: number;
 
   constructor(
     public dialog: MatDialog,
@@ -21,9 +23,13 @@ export class ReminderBlockComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterContentChecked() {
+    this.setWidth();
+  }
+
   setWidth() {
-    const calendar = document.getElementById('calendar');
-    return calendar.offsetWidth;
+      const calendar = document.getElementById('calendar');
+      this.itemWidth = calendar.offsetWidth;
   }
 
   viewInfo() {
@@ -40,9 +46,5 @@ export class ReminderBlockComponent implements OnInit {
 
   onMouseOut() {
     this.weatherService.cleanForecast();
-  }
-
-  capitalizeWord(word: string) {
-    return this.weatherService.capitalize(word);
   }
 }

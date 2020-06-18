@@ -21,7 +21,7 @@
     <div class="group">
       <mat-form-field appearance="standard">
         <mat-label>Time</mat-label>
-        <mat-select [(value)]="selectedTime" name="time" ngModel [disabled]="allday">
+        <mat-select [(value)]="selectedTime" [disabled]="allday">
           <ng-container *ngFor="let hour of time.hours">
             <mat-option *ngFor="let minute of time.minutes" value="{{hour}}:{{minute}}">{{hour}}:{{minute}}</mat-option>
           </ng-container>

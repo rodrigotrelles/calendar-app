@@ -14,7 +14,7 @@ export class ReminderService {
 
   constructor(
     private snackbarService: SnackbarService
-  ) {}
+  ) { }
 
   get reminders(): IReminder[] {
     return this.remindersSource.getValue();
@@ -93,38 +93,39 @@ export class ReminderService {
   }
 
   addFakeData() {
+    const today = moment().format('YYYY-MM-D');
+
     const reminder: IReminder = {
       id: '1',
-      text: 'Prueba',
-      color: '#67db86',
+      text: 'Cinema',
+      color: '#ffce47',
       allday: false,
       city: 'LONDON',
-      date: moment('2020-06-17').add(10, 'hours'),
-      time: '10:00'
+      date: moment(today).add(22, 'hours'),
+      time: '22:00'
     };
-
     this.addReminder(reminder);
 
     const reminder2: IReminder = {
       id: '2',
-      text: 'Prueba2',
-      color: '#67db86',
+      text: 'Oculist',
+      color: '#99d6f2',
       allday: false,
       city: 'MONTEVIDEO',
-      date: moment('2020-06-18').add(12, 'hours'),
-      time: '12:00'
+      date: moment(today).add(1, 'day').add(10, 'hours'),
+      time: '10:00'
     };
 
     this.addReminder(reminder2);
 
     const reminder3: IReminder = {
       id: '3',
-      text: 'Prueba3',
-      color: '#67db86',
+      text: 'Basketball Practice',
+      color: '#dcbce0',
       allday: false,
-      city: 'MONTEVIDEO',
-      date: moment('2020-06-16').add(10, 'hours'),
-      time: '10:00'
+      city: 'SANTIAGO',
+      date: moment(today).add(16, 'hours'),
+      time: '16:00'
     };
 
     this.addReminder(reminder3);
@@ -132,11 +133,11 @@ export class ReminderService {
 
     const reminder4: IReminder = {
       id: '4',
-      text: 'Prueba4',
-      color: '#67db86',
+      text: 'Free day',
+      color: '#e0d0bc',
       allday: true,
-      city: 'MONTEVIDEO',
-      date: moment('2020-06-18').add(11, 'hours'),
+      city: 'PARIS',
+      date: moment(today).add(11, 'hours'),
       time: '11:00'
     };
 
@@ -144,12 +145,12 @@ export class ReminderService {
 
     const reminder5: IReminder = {
       id: '5',
-      text: 'Prueba5',
-      color: '#67db86',
+      text: 'Shopping',
+      color: '#ddebb5',
       allday: false,
       city: 'MONTEVIDEO',
-      date: moment('2020-06-17').add(12, 'hours'),
-      time: '12:00'
+      date: moment(today).add(2, 'days').add(15, 'hours'),
+      time: '15:00'
     };
 
     this.addReminder(reminder5);

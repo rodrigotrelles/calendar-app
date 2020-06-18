@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="reminder" [ngStyle]="{'background-color': reminder.color, 'width': setWidth()}" (click)="viewInfo()"
+  <div class="reminder" [ngStyle]="{'background-color': reminder.color, 'width': itemWidth}" (click)="viewInfo()"
     (mouseenter)="onMouseOver()" (mouseleave)="onMouseOut()">
     <span *ngIf="!reminder.allday" class="reminder__time">{{reminder.date.format('HH:mm')}}</span>
     <span>{{index}} {{reminder.text}}</span>

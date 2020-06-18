@@ -56,7 +56,7 @@ export class NewReminderComponent implements OnInit {
         allday: this.allday
       };
       this.reminderService.addReminder(reminder);
-      // this.close();
+      this.close();
     }
   }
 

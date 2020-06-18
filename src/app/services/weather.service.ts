@@ -12,7 +12,7 @@ export class WeatherService {
   public readonly forecast$ = this.forecastSource.asObservable();
 
   public loaderSource = new BehaviorSubject<boolean>(false);
-  public isLoading$ = this.loaderSource.asObservable();
+  public readonly isLoading$ = this.loaderSource.asObservable();
 
   constructor(private http: HttpClient) { }
 

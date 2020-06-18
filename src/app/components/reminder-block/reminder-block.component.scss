@@ -28,45 +28,9 @@
   position: relative;
 }
 
-.reminder:hover ~ .tooltip {
+.reminder:hover ~ app-reminder-tooltip {
   visibility: visible;
   opacity: 1;
 }
 
-.tooltip {
-  position: absolute;
-  visibility: hidden;
-  width: 270px;
-  background-color: #424242;
-  color: #fff;
-  text-align: center;
-  border-radius: 4px;
-  padding: 1rem;
-  z-index: 4;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  img {
-    align-self: center;
-    margin-bottom: .5rem;
-  }
-}
-
-.tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #424242 transparent transparent transparent;
-}

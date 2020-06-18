@@ -18,6 +18,7 @@ import { RemoveAllRemindersComponent } from './dialogs/remove-all-reminders/remo
 import { ReminderViewAllComponent } from './components/reminder-view-all/reminder-view-all.component';
 import { ViewAllRemindersComponent } from './dialogs/view-all-reminders/view-all-reminders.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReminderTooltipComponent } from './components/reminder-tooltip/reminder-tooltip.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     EditReminderComponent,
     RemoveAllRemindersComponent,
     ReminderViewAllComponent,
-    ViewAllRemindersComponent
+    ViewAllRemindersComponent,
+    ReminderTooltipComponent
   ],
   imports: [
     BrowserModule,

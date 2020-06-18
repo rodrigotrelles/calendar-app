@@ -1,0 +1,16 @@
+<div class="tooltip">
+  <ng-container *ngIf="weatherService.forecast && !(weatherService.isLoading$ | async)">
+    <img src="assets/icons/forecast.png" alt="">
+    <span>Reminder: {{reminder.text}}</span>
+    <span>City: {{reminder.city}}</span>
+    <span>Date: {{reminder.date.format('LLL')}}</span>
+    <ng-container *ngIf="weatherService.forecast !== 'no'">
+      <span>Forecast: {{capitalizeWord((weatherService.forecast$ | async).weather[0].description)}}</span>
+      <span>Humidity: {{(weatherService.forecast$ | async).main.humidity}}%</span>
+    </ng-container>
+    <ng-container *ngIf="weatherService.forecast === 'no'">
+      <span>No forecast available</span>
+    </ng-container>
+  </ng-container>
+  <mat-spinner color="accent" *ngIf="weatherService.isLoading$ | async"></mat-spinner>
+</div>
